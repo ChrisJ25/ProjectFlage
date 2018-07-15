@@ -13,13 +13,11 @@ else:
 			time.sleep(2)
 			print('Clearance code accepted!')
 			request1 = input('What would you like me to do for you? ') 
-
 			if request1 == 'Search':
 				searchfor = input('What would you like me to search for? ')
 				webbrowser.open('https://www.google.co.in/#q='+searchfor)
 			elif request1 == 'Open':
 				openapp = input('Which app would you like me to open?')
-
 			elif request1 == "Play Tunes":
 				playtune = input('What song would you like me to play? ')
 				if playtune == 'Dirty Deeds':
@@ -28,6 +26,7 @@ else:
 					winsound.PlaySound('TomPettyFreeFalling.wav', winsound.SND_FILENAME)
 				elif playtune == "I won't back down":
 					winsound.PlaySound('tom-petty-i-wont-back-down', winsound.SND_FILENAME)
+			
 	else:
 			time.sleep(2)
 			print('Clearance code denied!')
