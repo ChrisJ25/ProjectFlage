@@ -50,7 +50,7 @@ def GeneralOrder01():
 
 def LoopVideo(int):
         pyautogui.click(1760,660) #turns off autoplay
-        wait(int)
+        time.sleep(int)
         pyautogui.click(200,630)
 
 def SkipAds():
@@ -81,41 +81,65 @@ def Defcon5():
 
 def Write():
         engine.say("What shall I type?")
+        pyautogui.click()
         with sr.Microphone(device_index = device_id, sample_rate = sample_rate,chunk_size = chunk_size) as source: 
                 r.adjust_for_ambient_noise(source)
                 audio = r.listen(source) 
                 text = r.recognize_google(audio)
                 pyautogui.typewrite(text)
+        
+        
 
 def OpenEmail():
-        pyautogui.click(626,1042)
+        pyautogui.click(630,1045)
+        pyautogui.click(1885,70)
+        time.sleep(1)
+        pyautogui.click(1830,154)
+        time.sleep(3)
+        pyautogui.click(1620,200)
         engine.say("Which email would you like to open?")
-
+        engine.runAndWait()
+        with sr.Microphone(device_index = device_id, sample_rate = sample_rate,chunk_size = chunk_size) as source:
+                r.adjust_for_ambient_noise(source)
+                audio = r.listen(source) 
+                text = r.recognize_google(audio)
+        
+        if text == "doctor":
+                pyautogui.click(1600,200)
+                time.sleep(6)
+                pyautogui.click(1867,150)
+                pyautogui.click(1500,650)
+        elif text == "fallout":
+                pyautogui.click(1600,200)
+        elif text == "hydra":
+                pyautogui.click(1600,200)
+                time.sleep(6)
+                pyautogui.click(1867,150)
+                pyautogui.click(1500, 450)
 
 def OpenNetflix():
         engine.say("Opening netflix, sir.")
-        browser = webdriver.Chrome()
-        browser.get(('https://www.netflix.com/SwitchProfile?tkn=KSY2GDOMJZGK3OF2XSQ6NK3J3M'))
-        username = browser.find_element_by_id('id_userLoginId')
-        username.send_keys('juliestuff@comcast.net')
-        password = browser.find_element_by_id('id_password')
-        password.send_keys('Flix2017')
-        signin = browser.find_element_by_class_name('btn-submit')
-        signin.click()
-
+        engine.runAndWait()
+        pyautogui.click(630,1045)
+        pyautogui.click(1885,70)
+        time.sleep(1)
+        pyautogui.click(1830,154)
+        time.sleep(3)
+        pyautogui.click(403,23)
+        pyautogui.click(1200,750)
+        time.sleep(2)
+        pyautogui.click(1000,500)
+        engine.say("Enjoy your netflix session, sir.")
+        engine.runAndWait()
 def OpenPowerschool():
+        pyautogui.click(630,1045)
+        pyautogui.click(1885,70)
+        time.sleep(1)
+        pyautogui.click(1830,154)
+        time.sleep(3)
         usernamestr = 'Johnston503'
         passwordstr = 'NRGINCHP'
 
-        browser = webdriver.Chrome()
-        browser.get(('https://pschool.aaps.k12.mi.us/public/'))
-
-        username = browser.find_element_by_id('fieldAccount')
-        username.send_keys(usernamestr)
-        password = browser.find_element_by_id('fieldPassword')
-        password.send_keys(passwordstr)
-        nextbutton = browser.find_element_by_id('btn-enter-sign-in')
-        nextbutton.click()
 
 
 engine.say("Hello sir. What can I do for you?")
@@ -125,7 +149,7 @@ with sr.Microphone(device_index = device_id, sample_rate = sample_rate,chunk_siz
     r.adjust_for_ambient_noise(source)
     audio = r.listen(source) 
     text = r.recognize_google(audio)
-    print(text) 
+    
 
 if text == "execute general order one":
         GeneralOrder01()
@@ -133,13 +157,15 @@ if text == "execute general order one":
 elif text == "execute general order two":
         GeneralOrder02()
 
-elif text == "open net flix":
+elif text == "open Netflix":
         OpenNetflix()
 
 elif text == "skip ads":
         SkipAds()
 
 elif text == "loop video":
+        engine.say("What is the video length?")
+        engine.runAndWait()
         LoopVideo()
 
 elif text == "write":
@@ -147,15 +173,14 @@ elif text == "write":
 
 elif text == "shutdown":
         engine.say("Affirmative, sir. Shutting down.")
+        engine.runAndWait()
         exit()
 
-elif text == "open e mail":
+elif text == "open email":
         OpenEmail()
 
 elif text == "open grades":
         OpenPowerschool()
-
-engine.runAndWait()
 
 
 
