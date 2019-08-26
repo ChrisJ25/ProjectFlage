@@ -122,15 +122,19 @@ def OpenNetflix():
         engine.runAndWait()
         pyautogui.click(630,1045)
         pyautogui.click(1885,70)
-        time.sleep(1)
+        time.sleep(2)
         pyautogui.click(1830,154)
         time.sleep(3)
         pyautogui.click(403,23)
+        time.sleep(1)
         pyautogui.click(1200,750)
-        time.sleep(2)
+        time.sleep(3)
         pyautogui.click(1000,500)
+        time.sleep(2)
         engine.say("Enjoy your netflix session, sir.")
+        
         engine.runAndWait()
+
 def OpenPowerschool():
         pyautogui.click(630,1045)
         pyautogui.click(1885,70)
